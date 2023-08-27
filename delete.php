@@ -1,4 +1,7 @@
 <?php
+require 'nav.php';
+?>
+<?php
 include 'connection.php';
 
 if(isset($_GET['deleteid'])){

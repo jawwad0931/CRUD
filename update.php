@@ -1,4 +1,7 @@
 <?php
+require 'nav.php';
+?>
+<?php
     include 'connection.php';
     if(isset($_GET['updateid'])){
         $id = $_GET['updateid'];
@@ -41,8 +44,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-DOXMLfHhQkvFFp+rWTZwVlPVqdIhpDVYT9csOnHSgWQWPX0v5MCGtjCJbY6ERspU" crossorigin="anonymous">
     <title>Update Data</title>
 </head>
-<body class="d-flex align-items-center justify-content-center">
-<form method="POST" action="update.php?idnew=<?php echo $id?>" class="w-50">
+<body class="">
+<form method="POST" action="update.php?idnew=<?php echo $id?>" class="w-100">
     <h1 class="text-center">Update Data</h1>
     <div class="mb-3">
         <label  class="form-label">Name</label>

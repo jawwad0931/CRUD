@@ -7,26 +7,38 @@
   <title>Document</title>
 </head>
 <?php
-error_reporting(0);
+require 'nav.php';
+?>
+<?php
 include 'connection.php';
 
-if($conn) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
-    $insert = "INSERT INTO `studenttable` (`Id`, `Name`, `Email`, `Phone`, `Address`) VALUES (NULL, '$name', ' $email', '$phone', '$address');";
-    $res = mysqli_query($conn,$insert);
-    if($res){
-        echo "<script>alert('Data Inserted Successfully')</script>";
-    }else{
-        echo "<script>alert('Data Not Inserted')</script>";
+
+    
+if (empty($name) && empty($email) && empty($phone)  && empty($address)) {
+        echo "<div class='alert alert-danger' role='alert'>
+        !!Unsucessful all the fields are required......
+      </div>";
+    } else {
+        $insert = "INSERT INTO `studenttable` (`Id`, `Name`, `Email`, `Phone`, `Address`) VALUES (NULL, '$name', '$email', '$phone', '$address')";
+        $res = mysqli_query($conn, $insert);
+        if ($res) {
+            echo "<script>alert('Data Inserted Successfully')</script>";
+        } else {
+            echo "<script>alert('Data Not Inserted')</script>";
+        }
     }
-} 
+}
+
 mysqli_close($conn);
 ?>
-<body class="d-flex align-item-center justify-content-center">
-<form method="POST" class="w-50">
+
+<body class="">
+<form method="POST" class="w-100">
     <h1 class="text-center">Data Insert </h1>
     <div class="mb-3">
         <label  class="form-label">Name</label>
